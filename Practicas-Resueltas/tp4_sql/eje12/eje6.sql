@@ -9,4 +9,4 @@ DELETE FROM Atencion WHERE nroCliente IN (
 )
 
 
-DELETE FROM Cliente WHERE dni="22222222";
+DELETE FROM Cliente WHERE dni= '22222222';
