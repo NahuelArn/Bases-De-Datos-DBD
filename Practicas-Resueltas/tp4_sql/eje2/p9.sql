@@ -1,20 +1,12 @@
 -- Reportar nombre, descripción y cantidad de habitantes de localidades que tengan menos de 100
 --  árboles.
 
-
-
-
-
-
-
-
 SELECT l.nombreL, l.descripcion, l.habitantes
 FROM Localidad l
--- INNER JOIN Arbol a ON a.codigoPostal = l.codigoPostal
-LEFT JOIN Arbol a ON a.codigoPostal = l.codigoPostal --QUE TENGAN MENOS DE 100 ARBOLES! si la localidad no tienen ningun arbol, me quedo igual con sus cantHabitantes
-
-GROUP BY l.nombreL, l.descripcion
-HAVING COUNT(a.nroArbol) < 100
+--QUE TENGAN MENOS DE 100 ARBOLES! si la localidad no tienen ningun arbol, me quedo igual con sus cantHabitantes
+LEFT JOIN Arbol a ON a.codigoPostal = l.codigoPostal 
+GROUP BY l.codigoPostal, l.nombreL, l.descripcion, l.habitantes
+HAVING COUNT(*) < 100
 
 --========================================
 
